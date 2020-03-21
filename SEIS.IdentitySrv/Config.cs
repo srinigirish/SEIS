@@ -42,8 +42,8 @@ namespace SEIS.IdentitySrv
         {
             return new List<ApiResource>
             {
-                // This is the resource definition for the BankOfDotNet.API project
-                new ApiResource("SEISRegistrationAPI", "Student Registration API")
+                // This is the resource definition for the Registration API
+                new ApiResource("RegistrationAPI", "Student Registration API")
             };
         }
 
@@ -116,7 +116,7 @@ namespace SEIS.IdentitySrv
                     },
                     // Define the scope of this client (might be a console client, native app, ios app, web app)
                     // We are only allowing the client to access BankOfDotNetAPI resource
-                    AllowedScopes = { "SEISRegistrationAPI" }
+                    AllowedScopes = { "RegistrationAPI" }
                 }//,
 
                 // Used by BankOfDotNet.ConsoleResourceOwner

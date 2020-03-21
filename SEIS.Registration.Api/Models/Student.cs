@@ -14,8 +14,8 @@ namespace SEIS.Registration.Api.Models
         public string LastName { get; set; }
         public string EmailAddress { get; set; }
         public string MobileNumber { get; set;}
-        public IEnumerable<Address> Addresses { get; set; }
-        public IEnumerable<EnrolledCourses> Courses { get; set; }
+        //public IEnumerable<Address> Addresses { get; set; }
+        //public IEnumerable<EnrolledCourses> Courses { get; set; }
     }
    
 }

@@ -17,9 +17,9 @@ namespace SEIS.Registration.Api.Models
         // The set of Students 
         public DbSet<Student> Students { get; set; }
         // The set of Enrolled Courses 
-        public DbSet<EnrolledCourses> EnrolledCourse { get; set; }
+        //public DbSet<EnrolledCourses> EnrolledCourse { get; set; }
         // The set of Addresses
-        public DbSet<Address> Addresses { get; set; }
+        //public DbSet<Address> Addresses { get; set; }
 
     }
 }
