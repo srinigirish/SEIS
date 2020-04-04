@@ -18,15 +18,12 @@ namespace SEIS.IdentitySrv
         {
             Configuration = configuration;
         }
-
         public IConfiguration Configuration { get; }
-
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             // Added when we add the IS4 UI 
             services.AddMvc(option => option.EnableEndpointRouting = false);
-
             // Plug-in our identity server middleware
             services.AddIdentityServer()
                 // Create a Temporary Key in Development environment tempkey.rsa
@@ -49,13 +46,11 @@ namespace SEIS.IdentitySrv
             {
                 app.UseDeveloperExceptionPage();
             }
-
             // We are going to plug-in the pipeline and use the identity service
             app.UseIdentityServer();
 
             // We are going to allow for static files for the wwwroot (css, js, lib, html)
             app.UseStaticFiles();
-
             // Use MVC with default route
             app.UseMvcWithDefaultRoute();
         }
