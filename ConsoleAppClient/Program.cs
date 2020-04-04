@@ -24,8 +24,7 @@ namespace ConsoleAppClient
             }
 
             // Grab a bearer token
-            // Values are configured in BankOfDotNet.IdentityServer.Config.cs
-            // This is the same as what we did in Postman request named "Request Token From BankOfDotNet.IdentityServer"
+            // Values are configured in SEIS.IdentitySrv.Config.cs
             var tokenClient = new TokenClient(discovery.TokenEndpoint, "Client", "secretpass");
             var tokenResponse = await tokenClient.RequestClientCredentialsAsync("RegistrationAPI");
 
@@ -38,12 +37,14 @@ namespace ConsoleAppClient
             Console.WriteLine(tokenResponse.Json);
             Console.WriteLine("\n\n");
  
-        // Consume our BankOfDotNet.API
-        var client = new HttpClient();
-            // In Postman, this is the Authorization token we defined in the Headers
-            client.SetBearerToken(tokenResponse.AccessToken);
+        // Create and Get Data from SEIS.RegistrationAPI
 
-            var customerInfo = new StringContent(
+        var client = new HttpClient();
+        // Set the Bearer Token
+        client.SetBearerToken(tokenResponse.AccessToken);
+        
+        //Pass the data to be created
+        var customerInfo = new StringContent(
                 JsonConvert.SerializeObject(
                     new { Id = 10, FirstName = "Girish", MiddleName="Srini", LastName = "Srinivasa",EmailAddress="g.srinivasa@test.com",MobileNumber="043892839" }),
                 Encoding.UTF8,
@@ -64,6 +65,7 @@ namespace ConsoleAppClient
                 throw ex;
             }
 
+            //Get the Data
             var getStudentResponse = await client.GetAsync("https://localhost:44332/api/registrations");
 
             if (!getStudentResponse.IsSuccessStatusCode)

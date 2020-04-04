@@ -29,19 +29,14 @@ namespace SEIS.IdentitySrv
 
             // Plug-in our identity server middleware
             services.AddIdentityServer()
-                // We are not going to use natural certificate to sign-in tokens and everything
-                // The idea is to use developer mode sign-in credentials
+                // Create a Temporary Key in Development environment tempkey.rsa
                 .AddDeveloperSigningCredential()
-                // We have Users (Human users) need to use Clients (PC, Phone) and those Clients have access
-                // to resources.  Our resource in our case is the BankOfDotNet.API and our client is one is 
-                // Postman and the other is console app.
-                // We will be setting up a config file as parameter
+                //Client will have access to the WebAPI Resource RegistrationAPI
                 .AddInMemoryApiResources(Config.GetAllApiResources())
-                // We have clients that will be registered to our Identity service and those clients
-                // are managed by IdentiyServer4 and have permissions to access some resources.
+                //What are the clients that need to be registered in IdentityServer
+                //for which IdentityServer needs to provide permissions to access resources.
                 .AddInMemoryClients(Config.GetClients())
-                // Add the in-memory test users for testing and to be used
-                // For the GrantTypes.ResourceOwnerPassword grant types in the BankOfDotNet.ConsoleResourceOwner project
+                // Add the in-memory test users for testing 
                 .AddTestUsers(Config.GetTestUsers())
                 // Add the Open-ID Connect Identity scope
                 .AddInMemoryIdentityResources(Config.GetidentityResources());

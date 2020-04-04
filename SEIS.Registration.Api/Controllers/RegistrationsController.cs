@@ -9,7 +9,7 @@ using System;
 
 namespace SEIS.Registration.Api.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class RegistrationsController : ControllerBase
