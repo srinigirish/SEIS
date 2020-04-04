@@ -46,7 +46,6 @@ namespace SEIS.IdentitySrv
                 new ApiResource("RegistrationAPI", "Student Registration API")
             };
         }
-
         // Used for OAuth Identity scopes
         public static IEnumerable<Client> GetClients()
         {
@@ -58,7 +57,6 @@ namespace SEIS.IdentitySrv
                 {
                     // The Client ID called  "Client".  Used when requesting an access token from IdentityServer
                     ClientId = "Client",
-
                     //Grant Type refers to the way by which Client communicates with IdentityServer
                     //to obtain access token so the Web API resource can be accessed.
                     //Grant Type of ClientCredentials are used  by machine to machine, trusted 1st party sources, server-to-server
